@@ -15,7 +15,7 @@ pipeline{
         stage("Build Image & Run Container"){
             steps{
                 echo "Build Docker Image using Dockerfile"
-                sh 'docker build -t ajaydabe/helloworld'
+                sh 'docker build -t ajaydabe/helloworld .'
                 echo "Running Container using Image"
                 sh 'docker run -itd -p 80:80 ajaydabe/helloworld'
             }
@@ -31,5 +31,3 @@ pipeline{
         }
     }
 }
-
-Thanks!!
