@@ -1,0 +1,10 @@
+version: '3'
+services:
+  sample1:
+    image: ajaydabe/consultancy-website
+    ports:
+      - "80:80"
+  sample2:
+    image: ajaydabe/k8sproject:1.7
+    ports:
+      - "85:80"

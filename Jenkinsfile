@@ -1,29 +1,24 @@
 pipeline{
     agent{
-        label 'slave'
+        label 'docker'
     }
     stages{
         stage("Cloning Git Repo"){
             steps{
                 echo "Cloning Git Repository to Local"
-                git url: 'https://github.com/ajaydabe/CI-CD-Pipeline-for-Deploying-Application-on-Docker_Container.git', branch: 'main'
+                git url: 'https://github.com/ajaydabe/CI-CD-Pipeline-for-Deploying-Application-on-Docker_Container.git', branch: 'docker-compose'
             }
         }
-        stage("Build Image & Run Container"){
+        stage("Install Docker-compose"){
             steps{
-                echo "Build Docker Image using Dockerfile"
-                sh 'docker build -t ajaydabe/helloworld'
-                echo "Running Container using Image"
-                sh 'docker run -itd -p 80:80 ajaydabe/helloworld'
+                echo "Installing Docker-compose"
+                sh 'apt install docker-compose -y'
             }
         }
-        stage("Push Image"){
+        stage("Create Deployment Service"){
             steps{
-                echo "Push Docker Image to DockerHub"
-                withCredentials([usernamePassword(credentialsId: 'DockerHub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-                    sh 'docker login -u $(env.USERNAME) -p(env.PASSWORD)'
-                    sh 'docker push ajaydabe/helloworld'
-                }
+                echo "Using Docker Stack, create Deployment Service"
+                sh 'docker stack deploy –c docker-compose.yml mydeployment'
             }
         }
     }
