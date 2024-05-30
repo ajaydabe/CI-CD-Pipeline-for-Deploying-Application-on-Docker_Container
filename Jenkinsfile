@@ -12,7 +12,7 @@ pipeline{
         stage("Create Deployment Service"){
             steps{
                 echo "Using Docker Stack, create Deployment Service"
-                sh "docker stack deploy –c ./docker-compose.yml mydeployment"
+                sh "docker stack deploy -c docker-compose.yml mydeployment"
             }
         }
     }
