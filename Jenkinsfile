@@ -9,12 +9,6 @@ pipeline{
                 git url: 'https://github.com/ajaydabe/CI-CD-Pipeline-for-Deploying-Application-on-Docker_Container.git', branch: 'docker-compose'
             }
         }
-        stage("Install Docker-compose"){
-            steps{
-                echo "Installing Docker-compose"
-                sh 'apt install docker-compose -y'
-            }
-        }
         stage("Create Deployment Service"){
             steps{
                 echo "Using Docker Stack, create Deployment Service"
