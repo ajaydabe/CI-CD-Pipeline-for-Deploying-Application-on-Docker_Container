@@ -5,6 +5,6 @@ services:
     ports:
       - "80:80"
   sample2:
-    image: ajaydabe/k8sproject:1.7
+    image: ajaydabe/edu.app:v1
     ports:
       - "85:80"
