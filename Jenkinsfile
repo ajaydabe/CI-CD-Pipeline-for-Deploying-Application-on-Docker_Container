@@ -15,7 +15,11 @@ pipeline{
                 sh 'docker build -t ajaydabe/helloworld'
                 echo "Running Container using Image"
                 sh 'docker run -itd -p 80:80 ajaydabe/helloworld'
+<<<<<<< HEAD
 		echo "Container is now running on the Port 80."
+=======
+                echo "container is running on port 80"
+>>>>>>> 4cf1b74f9e08da1cba07467c72c87b5dfaba7b7b
             }
         }
         stage("Push Image"){
