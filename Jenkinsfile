@@ -1,3 +1,4 @@
+// Jenkins Pipeline Draft
 pipeline{
     agent{
         label 'slave'
